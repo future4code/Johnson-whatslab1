@@ -22,10 +22,9 @@ const DivisoesSecundarias = styled.div`
   border-radius: 20px;
 
   @media screen and (min-device-width : 320px) and (max-device-width : 480px) {
-    padding: 0% 0%;
+    padding: -1% -1%;
     background-color: none;
   }
-
 `
 
 const DivisaoMensagem = styled.div`
@@ -35,19 +34,38 @@ const DivisaoMensagem = styled.div`
   display: flex;
 
   @media screen and (min-device-width : 320px) and (max-device-width : 480px) {
-    padding: 0% 0%;
+    padding: 0% -0%;
     background-color: none;
   }
 `
 
-const EstilizacaoInput = styled.input`
+const EstilizacaoInputUsuario = styled.input`
   border: none;
 
   @media screen and (min-device-width : 320px) and (max-device-width : 480px) {
-    width: 38vw;
+    width: 20vw;
     border-radius: none;
     background-color: none;
   }
+
+  @media screen and (min-device-width : 481px) and (max-device-width : 800px) {
+    width: 10vw;
+  }
+
+`
+const EstilizacaoInputMensagem = styled.input`
+  border: none;
+
+  @media screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    width: 40vw;
+    border-radius: none;
+    background-color: none;
+  }
+
+  @media screen and (min-device-width : 481px) and (max-device-width : 800px) {
+    width: 13vw;
+  }
+
 
 `
 const EstilizacaoBotao = styled.button`
@@ -59,17 +77,22 @@ const EstilizacaoBotao = styled.button`
     border-radius: none;
   }
 
+  @media screen and (min-device-width : 481px) and (max-device-width : 800px) {
+    width: 7vw;
+  }
+
+
 `
 
 function LabelsMessenger() {
   return (
     <Container>
       <DivisoesSecundarias >
-      <EstilizacaoInput placeholder="Usuário"></EstilizacaoInput>
+      <EstilizacaoInputUsuario placeholder="Usuário"></EstilizacaoInputUsuario>
       </DivisoesSecundarias >
 
       <DivisaoMensagem>
-      <EstilizacaoInput placeholder="insira sua mensagem"></EstilizacaoInput>
+      <EstilizacaoInputMensagem placeholder="insira sua mensagem"></EstilizacaoInputMensagem>
       </DivisaoMensagem>
 
       <DivisoesSecundarias>
