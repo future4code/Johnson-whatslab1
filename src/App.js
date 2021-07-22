@@ -4,6 +4,8 @@ import Container from "./components/Main/Main";
 import Footer from "./components/Footer/Footer/Footer";
 import GlobalStyle from "./GlobalStyles";
 
+
+
 function App() {
   return (
     <div>
