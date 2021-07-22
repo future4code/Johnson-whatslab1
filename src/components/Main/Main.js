@@ -8,13 +8,12 @@ const Main = styled.div`
   justify-content: center;
   align-items: center;
   background-color: #fff;
-  height: 80vh;
 `;
 
 const SecaoMensagens = styled.section`
   border: 1px solid #a1a1a1;
-  width: 60vw;
-  height: 70vh;
+  width: 100%;
+  height: 100vh;
   background-image: url(${background});
 `;
 
