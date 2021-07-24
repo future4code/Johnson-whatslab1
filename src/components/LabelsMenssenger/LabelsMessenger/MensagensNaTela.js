@@ -8,13 +8,9 @@ const ContainerInputs = styled.div`
   align-items: center;
   height: 10vh;
   max-width: 100%;
-
   background-color: #dcdcdc;
-
   justify-content: space-around;
   border-top: 1px solid #a1a1a1;
-
-  margin-top: 0vh;
 
   @media screen and (min-device-width: 320px) and (max-device-width: 480px) {
     display: flex;
@@ -25,21 +21,26 @@ const ContainerInputs = styled.div`
 `;
 
 const EnviandoMensagens = styled.div`
+  display: flex;
   padding: 0 5px;
-  
+  flex-direction: column-reverse;
 `;
 const BalaoVerde = styled.div`
-background-color: lightgreen;
+  align-self: flex-end;
+  background-color: lightgreen;
+
   width: 40vw;
-  margin: 10px;
-  font-size: 16px;
+  margin: 5px;
   padding: 10px;
   word-wrap: break-word;
   border-radius: 10px;
+
+  line-height: 1.3;
+  box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.2);
 `;
 
 const BalaoRosa = styled.div`
-background-color: lightpink;
+  background-color: lightpink;
   width: 40vw;
   margin: 10px;
   font-size: 16px;
@@ -47,7 +48,6 @@ background-color: lightpink;
   word-wrap: break-word;
   border-radius: 10px;
 `;
-
 
 const DivisaoUsuario = styled.div`
   background-color: white;
@@ -58,7 +58,7 @@ const DivisaoUsuario = styled.div`
     padding: -1% -1%;
     background-color: none;
     margin: 10px 0;
-    width: 90%;
+    width: 92%;
     border-radius: 5px;
   }
 `;
@@ -93,12 +93,14 @@ const DivisaoMensagem = styled.div`
 const EstilizacaoInputMensagem = styled.input`
   border: none;
   outline: 0;
-  width: 55vw;
+  width: 50vw;
+  padding-left:10px ;
 
   @media screen and (min-device-width: 320px) and (max-device-width: 480px) {
-    width: 40vw;
+    
     border-radius: none;
     background-color: none;
+    width: 100vw;
   }
 
   @media screen and (min-device-width: 481px) and (max-device-width: 800px) {
@@ -106,7 +108,7 @@ const EstilizacaoInputMensagem = styled.input`
   }
 `;
 const EstilizacaoBotao = styled.button`
-  border: none;
+  border: 1px solid darkgrey;
   background-color: #a4d4c4;
   cursor: pointer;
   color: grey;
@@ -152,55 +154,51 @@ export class MensagensNaTela extends React.Component {
       user: this.state.userValue,
       texto: this.state.mensagensValue,
     };
-    console.log(novaMensagem);
     const novaMensagemArray = [novaMensagem, ...this.state.mensagens];
     this.setState({ mensagens: novaMensagemArray, mensagensValue: "" });
   };
 
+  baloesMensagem = () => this.state.mensagens.map((mensagens, indice) => {
+    console.log(mensagens)
+    if (mensagens.user === "eu" || mensagens.user === "Eu") {
+      return <BalaoVerde key={indice}>{mensagens.texto}</BalaoVerde>;
+    } else {
+      return (
+        <BalaoRosa key={indice}>
+          <strong>{mensagens.user}</strong>:{mensagens.texto}
+        </BalaoRosa>
+      );
+    }
+  })
+
   render() {
     return (
       <>
-      <ContainerInputs>
-            <DivisaoUsuario>
-              <EstilizacaoInputUsuario
-                onChange={this.onChangeUserValue}
-                value={this.state.userValue}
-                placeholder="Usuário"
-              ></EstilizacaoInputUsuario>
-            </DivisaoUsuario>
+        <ContainerInputs>
+          <DivisaoUsuario>
+            <EstilizacaoInputUsuario
+              onChange={this.onChangeUserValue}
+              value={this.state.userValue}
+              placeholder="Usuário"
+            ></EstilizacaoInputUsuario>
+          </DivisaoUsuario>
 
-            <DivisaoMensagem>
-              <EstilizacaoInputMensagem
-                onChange={this.onChangeMensagensValue}
-                value={this.state.mensagensValue}
-                placeholder="Digite uma mensagem"
-              ></EstilizacaoInputMensagem>
-            </DivisaoMensagem>
+          <DivisaoMensagem>
+            <EstilizacaoInputMensagem
+              onChange={this.onChangeMensagensValue}
+              value={this.state.mensagensValue}
+              placeholder="Digite uma mensagem"
+            ></EstilizacaoInputMensagem>
+          </DivisaoMensagem>
 
-            <EstilizacaoBotao onClick={this.enviarMensagem}>
-              Enviar
-            </EstilizacaoBotao>
-          </ContainerInputs>
+          <EstilizacaoBotao onClick={this.enviarMensagem}>
+            Enviar
+          </EstilizacaoBotao>
+        </ContainerInputs>
 
         <EnviandoMensagens>
-          {this.state.mensagens.map((mensagens, indice) => {
-            if (mensagens.userValue === "eu" || "Eu") {
-              return (
-                <BalaoVerde key={indice}>
-                  {mensagens.texto}
-                </BalaoVerde>
-              )
-            }else{
-              return(
-              <BalaoRosa key={indice}>
-                <strong>{mensagens.userValue}</strong>:{mensagens.texto}
-              </BalaoRosa>
-              )
-            }
-          })}
+          {this.baloesMensagem()}
         </EnviandoMensagens>
-
-
       </>
     );
   }
