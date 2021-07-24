@@ -1,15 +1,13 @@
 import React from "react";
-import styled from "styled-components";
-import Container from "./components/Main/Main";
-
+import ContainerInputs from "./components/Main/Main";
+import GlobalStyles from "./GlobalStyles"
 
 
 function App() {
   return (
     <div>
-
-      <Container />
-      
+      <GlobalStyles />
+      <ContainerInputs />
     </div>
   );
 }
