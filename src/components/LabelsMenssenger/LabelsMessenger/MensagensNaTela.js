@@ -132,7 +132,7 @@ const EstilizacaoBotao = styled.button`
   @media screen and (min-device-width: 481px) and (max-device-width: 800px) {
     width: 7vw;
   }
-`;
+`; 
 
 export class MensagensNaTela extends React.Component {
   state = {
@@ -157,6 +157,19 @@ export class MensagensNaTela extends React.Component {
     const novaMensagemArray = [novaMensagem, ...this.state.mensagens];
     this.setState({ mensagens: novaMensagemArray, mensagensValue: "" });
   };
+
+  baloesMensagem = () => this.state.mensagens.map((mensagens, indice) => {
+    console.log(mensagens)
+    if (mensagens.user === "eu" || mensagens.user === "Eu") {
+      return <BalaoVerde key={indice}>{mensagens.texto}</BalaoVerde>;
+    } else {
+      return (
+        <BalaoRosa key={indice}>
+          <strong>{mensagens.user}</strong>:{mensagens.texto}
+        </BalaoRosa>
+      );
+    }
+  })
 
   render() {
     return (
@@ -184,17 +197,7 @@ export class MensagensNaTela extends React.Component {
         </ContainerInputs>
 
         <EnviandoMensagens>
-          {this.state.mensagens.map((mensagens, indice) => {
-            if (mensagens.userValue === "eu" || "Eu") {
-              return <BalaoVerde key={indice}>{mensagens.texto}</BalaoVerde>;
-            } else {
-              return (
-                <BalaoRosa key={indice}>
-                  <strong>{mensagens.userValue}</strong>:{mensagens.texto}
-                </BalaoRosa>
-              );
-            }
-          })}
+          {this.baloesMensagem()}
         </EnviandoMensagens>
       </>
     );
