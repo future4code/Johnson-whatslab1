@@ -130,7 +130,7 @@ const EstilizacaoBotao = styled.button`
   @media screen and (min-device-width: 481px) and (max-device-width: 800px) {
     width: 7vw;
   }
-`;
+`; 
 
 export class MensagensNaTela extends React.Component {
   state = {
