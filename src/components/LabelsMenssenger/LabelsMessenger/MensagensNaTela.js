@@ -1,6 +1,6 @@
 import React from "react";
-
 import styled from "styled-components";
+
 
 const ContainerInputs = styled.div`
   display: flex;
@@ -11,6 +11,7 @@ const ContainerInputs = styled.div`
   background-color: #dcdcdc;
   justify-content: space-around;
   border-top: 1px solid #a1a1a1;
+
 
   @media screen and (min-device-width: 320px) and (max-device-width: 480px) {
     display: flex;
@@ -37,6 +38,17 @@ const BalaoVerde = styled.div`
 
   line-height: 1.3;
   box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.2);
+  position: relative;
+
+  &:after {
+	content: '';
+	border: 15px solid transparent;
+	border-top-color: lightgreen;
+  position: absolute;
+  top: 0px;
+  right: -8px;
+}
+
 `;
 
 const BalaoRosa = styled.div`
@@ -47,6 +59,17 @@ const BalaoRosa = styled.div`
   padding: 10px;
   word-wrap: break-word;
   border-radius: 10px;
+  position: relative;
+
+  &:after {
+	content: '';
+	border: 15px solid transparent;
+	border-top-color: lightpink;
+  position: absolute;
+  top: 0px;
+  left: -8px;
+}
+
 `;
 
 const DivisaoUsuario = styled.div`
@@ -156,6 +179,7 @@ export class MensagensNaTela extends React.Component {
     };
     const novaMensagemArray = [novaMensagem, ...this.state.mensagens];
     this.setState({ mensagens: novaMensagemArray, mensagensValue: "" });
+    this.setState({ mensagens: novaMensagemArray, userValue: "" });
   };
 
   baloesMensagem = () => this.state.mensagens.map((mensagens, indice) => {
@@ -165,7 +189,7 @@ export class MensagensNaTela extends React.Component {
     } else {
       return (
         <BalaoRosa key={indice}>
-          <strong>{mensagens.user}</strong>:{mensagens.texto}
+          <strong>{mensagens.user}</strong>: {mensagens.texto}
         </BalaoRosa>
       );
     }
