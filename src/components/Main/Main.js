@@ -1,25 +1,32 @@
 import React from "react";
 import styled from "styled-components";
-import LabelsMessenger from "../LabelsMenssenger/LabelsMessenger/MessengerLabels";
 import background from "../images/BackgroundWhats.png";
+import { MensagensNaTela } from "../LabelsMenssenger/LabelsMessenger/MensagensNaTela.js";
 
-const SecaoMensagens = styled.section`
+const SecaoMensagens = styled.div`
   border: 1px solid #a1a1a1;
-  width: 100%;
-  height: 100vh;
+  max-width: 100vw;
+  max-height: 100vh;
   background-image: url(${background});
+
+  height: 100vh;
+  display: flex;
+
+  flex-direction: column-reverse;
+
+  @media screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    height: 96.5vh;
+  }
 `;
 
-function Container() {
+function ContainerInputs() {
   return (
-
+    <>
       <SecaoMensagens>
-
-        <LabelsMessenger />
-        
+        <MensagensNaTela />
       </SecaoMensagens>
-
+    </>
   );
 }
 
-export default Container;
+export default ContainerInputs;
