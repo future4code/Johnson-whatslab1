@@ -28,7 +28,7 @@ const EnviandoMensagens = styled.div`
 `;
 const BalaoVerde = styled.div`
   align-self: flex-end;
-  background-color: lightgreen;
+  background-color: #BFFCC6;
 
   width: 40vw;
   margin: 5px;
@@ -39,35 +39,60 @@ const BalaoVerde = styled.div`
   line-height: 1.3;
   box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.2);
   position: relative;
+  //Animação 
+animation-name: balaoSurgindo;
+animation-fill-mode: forwards;
+animation-iteration-count: 1;
+animation-duration: .2s;
 
   &:after {
 	content: '';
 	border: 15px solid transparent;
-	border-top-color: lightgreen;
+	border-top-color: #BFFCC6;
   position: absolute;
   top: 0px;
   right: -8px;
+
 }
 
 `;
 
 const BalaoRosa = styled.div`
-  background-color: lightpink;
+  background-color: #FFC9DE;
   width: 40vw;
   margin: 10px;
   font-size: 16px;
-  padding: 10px;
+  padding: 2px 10px;
   word-wrap: break-word;
   border-radius: 10px;
   position: relative;
 
+  box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.2);
+
+  
+  //Animação 
+  animation-name: balaoSurgindo;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+  animation-duration: .2s;
+
+
+  strong{
+    font-size: .8rem;
+    color: #E47262;
+  }
+  p{
+    margin: 2px 0px;
+  }
+
   &:after {
 	content: '';
 	border: 15px solid transparent;
-	border-top-color: lightpink;
+	border-top-color: #FFC9DE;
   position: absolute;
   top: 0px;
   left: -8px;
+
 }
 
 `;
@@ -132,9 +157,9 @@ const EstilizacaoInputMensagem = styled.input`
 `;
 const EstilizacaoBotao = styled.button`
   border: 1px solid darkgrey;
-  background-color: #a4d4c4;
+  background-color: #64BD56;
   cursor: pointer;
-  color: grey;
+  color: #FFF;
   padding: 0.8% 2%;
   border-radius: 10px;
 
@@ -184,12 +209,12 @@ export class MensagensNaTela extends React.Component {
 
   baloesMensagem = () => this.state.mensagens.map((mensagens, indice) => {
     console.log(mensagens)
-    if (mensagens.user === "eu" || mensagens.user === "Eu") {
+    if (mensagens.user === "eu" || mensagens.user === "Eu" || mensagens.user === "") {
       return <BalaoVerde key={indice}>{mensagens.texto}</BalaoVerde>;
     } else {
       return (
         <BalaoRosa key={indice}>
-          <strong>{mensagens.user}</strong>: {mensagens.texto}
+          <strong>{mensagens.user}</strong> <p> {mensagens.texto}</p>
         </BalaoRosa>
       );
     }
