@@ -14,18 +14,19 @@ const ContainerInputs = styled.div`
   justify-content: space-around;
   border-top: 1px solid #a1a1a1;
 
-  margin-top: 85vh;
+  margin-top: 0vh;
 
   @media screen and (min-device-width: 320px) and (max-device-width: 480px) {
     display: flex;
     flex-direction: column;
-    margin-top: 70vh;
+    margin-top: 0vh;
     height: 25vh;
   }
 `;
 
 const EnviandoMensagens = styled.div`
   padding: 0 5px;
+  
 `;
 const BalaoVerde = styled.div`
 background-color: lightgreen;
@@ -159,6 +160,28 @@ export class MensagensNaTela extends React.Component {
   render() {
     return (
       <>
+      <ContainerInputs>
+            <DivisaoUsuario>
+              <EstilizacaoInputUsuario
+                onChange={this.onChangeUserValue}
+                value={this.state.userValue}
+                placeholder="Usuário"
+              ></EstilizacaoInputUsuario>
+            </DivisaoUsuario>
+
+            <DivisaoMensagem>
+              <EstilizacaoInputMensagem
+                onChange={this.onChangeMensagensValue}
+                value={this.state.mensagensValue}
+                placeholder="Digite uma mensagem"
+              ></EstilizacaoInputMensagem>
+            </DivisaoMensagem>
+
+            <EstilizacaoBotao onClick={this.enviarMensagem}>
+              Enviar
+            </EstilizacaoBotao>
+          </ContainerInputs>
+
         <EnviandoMensagens>
           {this.state.mensagens.map((mensagens, indice) => {
             if (mensagens.userValue === "eu" || "Eu") {
@@ -177,27 +200,7 @@ export class MensagensNaTela extends React.Component {
           })}
         </EnviandoMensagens>
 
-        <ContainerInputs>
-          <DivisaoUsuario>
-            <EstilizacaoInputUsuario
-              onChange={this.onChangeUserValue}
-              value={this.state.userValue}
-              placeholder="Usuário"
-            ></EstilizacaoInputUsuario>
-          </DivisaoUsuario>
 
-          <DivisaoMensagem>
-            <EstilizacaoInputMensagem
-              onChange={this.onChangeMensagensValue}
-              value={this.state.mensagensValue}
-              placeholder="Digite uma mensagem"
-            ></EstilizacaoInputMensagem>
-          </DivisaoMensagem>
-
-          <EstilizacaoBotao onClick={this.enviarMensagem}>
-            Enviar
-          </EstilizacaoBotao>
-        </ContainerInputs>
       </>
     );
   }
