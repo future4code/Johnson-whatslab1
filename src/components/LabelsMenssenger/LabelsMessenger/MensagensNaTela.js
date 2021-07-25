@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
+// ======================== Toda a estilização do app com Styled-Components ======================== //
+
 const ContainerInputs = styled.div`
   display: flex;
   justify-content: center;
@@ -18,7 +20,6 @@ const ContainerInputs = styled.div`
     height: 25vh;
   }
 `;
-
 
 const EnviandoMensagens = styled.div`
   display: flex;
@@ -38,7 +39,8 @@ const BalaoVerde = styled.div`
   line-height: 1.3;
   box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.2);
   position: relative;
-  //Animação
+
+  //Animação - KeyFrame adicionado ao GlobalStyled Components
   animation-name: balaoSurgindo;
   animation-fill-mode: forwards;
   animation-iteration-count: 1;
@@ -66,7 +68,7 @@ const BalaoRosa = styled.div`
 
   box-shadow: 1px 3px 3px 1px rgba(0, 0, 0, 0.2);
 
-  //Animação
+  //Animação - KeyFrame adicionado ao GlobalStyled Components
   animation-name: balaoSurgindo;
   animation-fill-mode: forwards;
   animation-iteration-count: 1;
@@ -174,6 +176,8 @@ const EstilizacaoBotao = styled.button`
   }
 `;
 
+// ======================== Toda a lógica do app ======================== //
+
 export class MensagensNaTela extends React.Component {
   state = {
     mensagens: [],
@@ -222,13 +226,20 @@ export class MensagensNaTela extends React.Component {
       }
     });
 
+  // Solução emcontrada aqui: https://pt.stackoverflow.com/questions/44796/colocar-clique-do-bot%C3%A3o-na-tecla-enter
   enviandoComEnter = (event) => {
-    if (event.key === "Enter") {
+    if (event.which == 13) {
       return this.enviarMensagem();
     }
   };
 
+  // Não consegui pensar em uma implementação =(
   deletarMensagens = () => {};
+
+  // Emitir sons de envio de mensagem e de delete
+  // Não consegui pensar em uma implementação =(
+  //Talves um splice()?
+  sonsEnvioEDelete = () => {};
 
   render() {
     return (

@@ -11,6 +11,8 @@ const GlobalStyles = createGlobalStyle`
     }
 
 
+    /// Para inserir as animações no momento do envio das mensagens
+
     @keyframes balaoSurgindo {
         from {
             opacity: 0;
