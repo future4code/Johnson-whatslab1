@@ -6,8 +6,11 @@ const GlobalStyles = createGlobalStyle`
         font-family: 'Poppins', sans-serif;
     }
 
+    html{
+        height: 100vh;
+    }
 
-    
+
     @keyframes balaoSurgindo {
         from {
             opacity: 0;

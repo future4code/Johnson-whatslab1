@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 
-
 const ContainerInputs = styled.div`
   display: flex;
   justify-content: center;
@@ -12,7 +11,6 @@ const ContainerInputs = styled.div`
   justify-content: space-around;
   border-top: 1px solid #a1a1a1;
 
-
   @media screen and (min-device-width: 320px) and (max-device-width: 480px) {
     display: flex;
     flex-direction: column;
@@ -21,6 +19,7 @@ const ContainerInputs = styled.div`
   }
 `;
 
+
 const EnviandoMensagens = styled.div`
   display: flex;
   padding: 0 5px;
@@ -28,7 +27,7 @@ const EnviandoMensagens = styled.div`
 `;
 const BalaoVerde = styled.div`
   align-self: flex-end;
-  background-color: #BFFCC6;
+  background-color: #bffcc6;
 
   width: 40vw;
   margin: 5px;
@@ -39,26 +38,24 @@ const BalaoVerde = styled.div`
   line-height: 1.3;
   box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.2);
   position: relative;
-  //Animação 
-animation-name: balaoSurgindo;
-animation-fill-mode: forwards;
-animation-iteration-count: 1;
-animation-duration: .2s;
+  //Animação
+  animation-name: balaoSurgindo;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+  animation-duration: 0.2s;
 
   &:after {
-	content: '';
-	border: 15px solid transparent;
-	border-top-color: #BFFCC6;
-  position: absolute;
-  top: 0px;
-  right: -8px;
-
-}
-
+    content: "";
+    border: 15px solid transparent;
+    border-top-color: #bffcc6;
+    position: absolute;
+    top: 0px;
+    right: -8px;
+  }
 `;
 
 const BalaoRosa = styled.div`
-  background-color: #FFC9DE;
+  background-color: #ffc9de;
   width: 40vw;
   margin: 10px;
   font-size: 16px;
@@ -67,34 +64,30 @@ const BalaoRosa = styled.div`
   border-radius: 10px;
   position: relative;
 
-  box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 1px 3px 3px 1px rgba(0, 0, 0, 0.2);
 
-  
-  //Animação 
+  //Animação
   animation-name: balaoSurgindo;
   animation-fill-mode: forwards;
   animation-iteration-count: 1;
-  animation-duration: .2s;
+  animation-duration: 0.2s;
 
-
-  strong{
-    font-size: .8rem;
-    color: #E47262;
+  strong {
+    font-size: 0.8rem;
+    color: #e47262;
   }
-  p{
+  p {
     margin: 2px 0px;
   }
 
   &:after {
-	content: '';
-	border: 15px solid transparent;
-	border-top-color: #FFC9DE;
-  position: absolute;
-  top: 0px;
-  left: -8px;
-
-}
-
+    content: "";
+    border: 15px solid transparent;
+    border-top-color: #ffc9de;
+    position: absolute;
+    top: 0px;
+    left: -8px;
+  }
 `;
 
 const DivisaoUsuario = styled.div`
@@ -142,10 +135,9 @@ const EstilizacaoInputMensagem = styled.input`
   border: none;
   outline: 0;
   width: 50vw;
-  padding-left:10px ;
+  padding-left: 10px;
 
   @media screen and (min-device-width: 320px) and (max-device-width: 480px) {
-    
     border-radius: none;
     background-color: none;
     width: 100vw;
@@ -157,9 +149,9 @@ const EstilizacaoInputMensagem = styled.input`
 `;
 const EstilizacaoBotao = styled.button`
   border: 1px solid darkgrey;
-  background-color: #64BD56;
+  background-color: #64bd56;
   cursor: pointer;
-  color: #FFF;
+  color: #fff;
   padding: 0.8% 2%;
   border-radius: 10px;
 
@@ -180,7 +172,7 @@ const EstilizacaoBotao = styled.button`
   @media screen and (min-device-width: 481px) and (max-device-width: 800px) {
     width: 7vw;
   }
-`; 
+`;
 
 export class MensagensNaTela extends React.Component {
   state = {
@@ -202,23 +194,41 @@ export class MensagensNaTela extends React.Component {
       user: this.state.userValue,
       texto: this.state.mensagensValue,
     };
+
     const novaMensagemArray = [novaMensagem, ...this.state.mensagens];
-    this.setState({ mensagens: novaMensagemArray, mensagensValue: "" });
-    this.setState({ mensagens: novaMensagemArray, userValue: "" });
+    this.setState({
+      mensagens: novaMensagemArray,
+      mensagensValue: "",
+      userValue: "",
+    });
   };
 
-  baloesMensagem = () => this.state.mensagens.map((mensagens, indice) => {
-    console.log(mensagens)
-    if (mensagens.user === "eu" || mensagens.user === "Eu" || mensagens.user === "") {
-      return <BalaoVerde key={indice}>{mensagens.texto}</BalaoVerde>;
-    } else {
-      return (
-        <BalaoRosa key={indice}>
-          <strong>{mensagens.user}</strong> <p> {mensagens.texto}</p>
-        </BalaoRosa>
-      );
+  baloesMensagem = () =>
+    this.state.mensagens.map((mensagens, indice) => {
+      console.log(mensagens);
+      if (
+        mensagens.user === "eu" ||
+        mensagens.user === "Eu" ||
+        mensagens.user === ""
+      ) {
+        return <BalaoVerde key={indice}>{mensagens.texto}</BalaoVerde>;
+      } else {
+        return (
+          <BalaoRosa key={indice}>
+            <strong>{mensagens.user}</strong>
+            <p>{mensagens.texto}</p>
+          </BalaoRosa>
+        );
+      }
+    });
+
+  enviandoComEnter = (event) => {
+    if (event.key === "Enter") {
+      return this.enviarMensagem();
     }
-  })
+  };
+
+  deletarMensagens = () => {};
 
   render() {
     return (
@@ -228,6 +238,7 @@ export class MensagensNaTela extends React.Component {
             <EstilizacaoInputUsuario
               onChange={this.onChangeUserValue}
               value={this.state.userValue}
+              onKeyPress={this.enviandoComEnter}
               placeholder="Usuário"
             ></EstilizacaoInputUsuario>
           </DivisaoUsuario>
@@ -236,6 +247,7 @@ export class MensagensNaTela extends React.Component {
             <EstilizacaoInputMensagem
               onChange={this.onChangeMensagensValue}
               value={this.state.mensagensValue}
+              onKeyPress={this.enviandoComEnter}
               placeholder="Digite uma mensagem"
             ></EstilizacaoInputMensagem>
           </DivisaoMensagem>
@@ -245,9 +257,7 @@ export class MensagensNaTela extends React.Component {
           </EstilizacaoBotao>
         </ContainerInputs>
 
-        <EnviandoMensagens>
-          {this.baloesMensagem()}
-        </EnviandoMensagens>
+        <EnviandoMensagens>{this.baloesMensagem()}</EnviandoMensagens>
       </>
     );
   }
