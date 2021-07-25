@@ -1,5 +1,5 @@
 # WhatsLab1
-Atividade em dupla desenvolvida pela [Labenu](https://www.labenu.com.br/).
+Atividade em dupla desenvolvida pela [Labenu](https://www.labenu.com.br/). 
 O objetivo é aplicar e desafiar a praticar os conceitos ministrados nas aulas de React.
 
 ### Instrutores:
@@ -13,7 +13,7 @@ O objetivo é aplicar e desafiar a praticar os conceitos ministrados nas aulas d
 - Styled-Components
 
 ## Desenvolvedores 
-[Gabriela Fogaça](https://github.com/Fogabi)
+[Gabriela Fogaça](https://github.com/Fogabi) e 
 [Gabriel Azevedo](https://github.com/gabazevdo)
 
 ## Link Surge
