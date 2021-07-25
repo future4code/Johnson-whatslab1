@@ -7,8 +7,24 @@ const GlobalStyles = createGlobalStyle`
     }
 
     html{
-        /* height: 100vh; */
+        height: 100vh;
     }
+
+
+    /// Para inserir as animações no momento do envio das mensagens
+
+    @keyframes balaoSurgindo {
+        from {
+            opacity: 0;
+            transform: translateY(10px)
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0px)
+        }
+    }
+    
+
     
 `
 

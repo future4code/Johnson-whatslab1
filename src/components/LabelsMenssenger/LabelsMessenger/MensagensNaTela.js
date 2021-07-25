@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
+// ======================== Toda a estilização do app com Styled-Components ======================== //
 
 const ContainerInputs = styled.div`
   display: flex;
@@ -11,7 +12,6 @@ const ContainerInputs = styled.div`
   background-color: #dcdcdc;
   justify-content: space-around;
   border-top: 1px solid #a1a1a1;
-
 
   @media screen and (min-device-width: 320px) and (max-device-width: 480px) {
     display: flex;
@@ -28,7 +28,7 @@ const EnviandoMensagens = styled.div`
 `;
 const BalaoVerde = styled.div`
   align-self: flex-end;
-  background-color: lightgreen;
+  background-color: #bffcc6;
 
   width: 40vw;
   margin: 5px;
@@ -40,36 +40,56 @@ const BalaoVerde = styled.div`
   box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.2);
   position: relative;
 
-  &:after {
-	content: '';
-	border: 15px solid transparent;
-	border-top-color: lightgreen;
-  position: absolute;
-  top: 0px;
-  right: -8px;
-}
+  //Animação - KeyFrame adicionado ao GlobalStyled Components
+  animation-name: balaoSurgindo;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+  animation-duration: 0.2s;
 
+  &:after {
+    content: "";
+    border: 15px solid transparent;
+    border-top-color: #bffcc6;
+    position: absolute;
+    top: 0px;
+    right: -8px;
+  }
 `;
 
 const BalaoRosa = styled.div`
-  background-color: lightpink;
+  background-color: #ffc9de;
   width: 40vw;
   margin: 10px;
   font-size: 16px;
-  padding: 10px;
+  padding: 2px 10px;
   word-wrap: break-word;
   border-radius: 10px;
   position: relative;
 
-  &:after {
-	content: '';
-	border: 15px solid transparent;
-	border-top-color: lightpink;
-  position: absolute;
-  top: 0px;
-  left: -8px;
-}
+  box-shadow: 1px 3px 3px 1px rgba(0, 0, 0, 0.2);
 
+  //Animação - KeyFrame adicionado ao GlobalStyled Components
+  animation-name: balaoSurgindo;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+  animation-duration: 0.2s;
+
+  strong {
+    font-size: 0.8rem;
+    color: #e47262;
+  }
+  p {
+    margin: 2px 0px;
+  }
+
+  &:after {
+    content: "";
+    border: 15px solid transparent;
+    border-top-color: #ffc9de;
+    position: absolute;
+    top: 0px;
+    left: -8px;
+  }
 `;
 
 const DivisaoUsuario = styled.div`
@@ -117,10 +137,9 @@ const EstilizacaoInputMensagem = styled.input`
   border: none;
   outline: 0;
   width: 50vw;
-  padding-left:10px ;
+  padding-left: 10px;
 
   @media screen and (min-device-width: 320px) and (max-device-width: 480px) {
-    
     border-radius: none;
     background-color: none;
     width: 100vw;
@@ -132,9 +151,9 @@ const EstilizacaoInputMensagem = styled.input`
 `;
 const EstilizacaoBotao = styled.button`
   border: 1px solid darkgrey;
-  background-color: #a4d4c4;
+  background-color: #64bd56;
   cursor: pointer;
-  color: grey;
+  color: #fff;
   padding: 0.8% 2%;
   border-radius: 10px;
 
@@ -155,7 +174,9 @@ const EstilizacaoBotao = styled.button`
   @media screen and (min-device-width: 481px) and (max-device-width: 800px) {
     width: 7vw;
   }
-`; 
+`;
+
+// ======================== Toda a lógica do app ======================== //
 
 export class MensagensNaTela extends React.Component {
   state = {
@@ -177,23 +198,48 @@ export class MensagensNaTela extends React.Component {
       user: this.state.userValue,
       texto: this.state.mensagensValue,
     };
+
     const novaMensagemArray = [novaMensagem, ...this.state.mensagens];
-    this.setState({ mensagens: novaMensagemArray, mensagensValue: "" });
-    this.setState({ mensagens: novaMensagemArray, userValue: "" });
+    this.setState({
+      mensagens: novaMensagemArray,
+      mensagensValue: "",
+      userValue: "",
+    });
   };
 
-  baloesMensagem = () => this.state.mensagens.map((mensagens, indice) => {
-    console.log(mensagens)
-    if (mensagens.user === "eu" || mensagens.user === "Eu") {
-      return <BalaoVerde key={indice}>{mensagens.texto}</BalaoVerde>;
-    } else {
-      return (
-        <BalaoRosa key={indice}>
-          <strong>{mensagens.user}</strong>: {mensagens.texto}
-        </BalaoRosa>
-      );
+  baloesMensagem = () =>
+    this.state.mensagens.map((mensagens, indice) => {
+      console.log(mensagens);
+      if (
+        mensagens.user === "eu" ||
+        mensagens.user === "Eu" ||
+        mensagens.user === ""
+      ) {
+        return <BalaoVerde key={indice}>{mensagens.texto}</BalaoVerde>;
+      } else {
+        return (
+          <BalaoRosa key={indice}>
+            <strong>{mensagens.user}</strong>
+            <p>{mensagens.texto}</p>
+          </BalaoRosa>
+        );
+      }
+    });
+
+  // Solução emcontrada aqui: https://pt.stackoverflow.com/questions/44796/colocar-clique-do-bot%C3%A3o-na-tecla-enter
+  enviandoComEnter = (event) => {
+    if (event.which == 13) {
+      return this.enviarMensagem();
     }
-  })
+  };
+
+  // Não consegui pensar em uma implementação =(
+  deletarMensagens = () => {};
+
+  // Emitir sons de envio de mensagem e de delete
+  // Não consegui pensar em uma implementação =(
+  //Talves um splice()?
+  sonsEnvioEDelete = () => {};
 
   render() {
     return (
@@ -203,6 +249,7 @@ export class MensagensNaTela extends React.Component {
             <EstilizacaoInputUsuario
               onChange={this.onChangeUserValue}
               value={this.state.userValue}
+              onKeyPress={this.enviandoComEnter}
               placeholder="Usuário"
             ></EstilizacaoInputUsuario>
           </DivisaoUsuario>
@@ -211,6 +258,7 @@ export class MensagensNaTela extends React.Component {
             <EstilizacaoInputMensagem
               onChange={this.onChangeMensagensValue}
               value={this.state.mensagensValue}
+              onKeyPress={this.enviandoComEnter}
               placeholder="Digite uma mensagem"
             ></EstilizacaoInputMensagem>
           </DivisaoMensagem>
@@ -220,9 +268,7 @@ export class MensagensNaTela extends React.Component {
           </EstilizacaoBotao>
         </ContainerInputs>
 
-        <EnviandoMensagens>
-          {this.baloesMensagem()}
-        </EnviandoMensagens>
+        <EnviandoMensagens>{this.baloesMensagem()}</EnviandoMensagens>
       </>
     );
   }

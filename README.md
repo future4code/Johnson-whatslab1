@@ -1,70 +1,57 @@
-# Getting Started with Create React App
+# WhatsLab1
+Atividade em dupla desenvolvida pela [Labenu](https://www.labenu.com.br/).
+O objetivo é aplicar e desafiar a praticar os conceitos ministrados nas aulas de React.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Instrutores:
+[Bruno](https://github.com/BrunoMovio), [Amandinha](https://github.com/amandarangel/), [Darvas](https://github.com/pdarvas/) e [Camis](https://github.com/monteirocamis/).
 
-## Available Scripts
+## Conceitos aplicados:
+-  Componentes de classe e Estados
+-  Renderização de Listas
+- Componentes Funcionais
+	#### Estilização:
+- Styled-Components
 
-In the project directory, you can run:
+## Desenvolvedores 
+[Gabriela Fogaça](https://github.com/Fogabi)
+[Gabriel Azevedo](https://github.com/gabazevdo)
 
-### `npm start`
+## Link Surge
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+https://whatslab1.surge.sh/
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
+---
+# Escopo do projeto
+Criar um aplicativo de troca de mensagens para bater de frente com os gigantes que existem atualmente, tais como WhatsApp, Telegram, Messenger e muitos outros.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Um projeto tão grande como este, normalmente, começa com a elaboração de um _MVP_. _MVP_ significa "_Minimum Valiable Product_", em tradução livre, "mínimo produto viável". Isto significa que começaremos implementando as _features_ (funcionalidades) que indiquem o objetivo principal do produto do nosso cliente. Desta forma, não há a necessidade de se desenvolver um sistema que envie e receba mensagens de fora - criaremos algo que simplesmente mostra novas mensagens.
 
-### `npm run build`
+## O escopo deste _MVP_ é:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**1. **Lista de mensagem:****
+ - Cada mensagem deve possuir um remetente (ou seja, um usuário que enviou) e o conteúdo em si.
+ - No layout, eles devem ficar assim:
+ ***nome do remente:** conteúdo da mensagem*
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**2. **Envio de mensagem:****
+- Abaixo da lista citada, deve existir um local onde o usuário escolhe o nome do remetente (input) ; o conteúdo da mensagem (input) e um botão de enviar;
+- No layout, eles devem ficar um ao lado do outro. Sendo o campo do remetente com largura muito menor do que o campo do conteúdo
+- Ao enviar a mensagem, os campos devem ser resetados para ficar em branco novamente.
+#### Exemplos:
+[MVP](http://whats4-mvp.surge.sh/)  
+[Estilização dos balões.](https://www.notion.so/Estilizando-um-bal-o-de-conversa-responsivo-e-bonitinho-9245f28811644abe8d0147d9f686e7f3)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## Desafios para o projeto
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+ - [X] Faça com que tanto o botão de enviar, como o botão "enter" envie
+       as mensagens.
+ - [X] Agora, vamos melhorar o design do nosso projeto. 
+  (Obs.: é uma funcionalidade bem parecida com os grupos do Whatsapp). Tentem
+       seguir o [layout do exemplo](http://whats4-desafio.surge.sh/) como guia.
+ - [ ] Implemente a funcionalidade de deletar mensagem. Sempre que o
+       usuário clicar duas vezes em cima de uma mensagem ela deve ser
+       apagada.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
